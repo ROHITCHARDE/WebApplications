@@ -1,0 +1,64 @@
+﻿@model System.Collections.Generic.List<TestAppn.Models.tblEmployee>
+@*@model System.Data.DataTable*@
+
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Index</h2>
+<select>
+    @foreach (var item in ViewBag.empdata)
+    {
+        <option value="@item.Id">@item.Name</option>
+    }
+
+</select>
+
+<table>
+    <tr>
+        <th>Employee Id</th>
+        <th>Employee Name</th>
+        <th>Employee Gender</th>
+        <th>Employee City</th>
+        <th>Employee Department</th>
+    </tr>
+
+    @*@foreach(var item in ViewBag.empdata)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td></td>
+                <td></td>
+            </tr>
+        }*@
+
+    @foreach (var item in @Model)
+    {
+        <tr>
+            <td>@item.EmployeeId</td>
+            <td>@item.Name</td>
+            <td>@item.Gender</td>
+            <td>@item.City</td>
+            <td>@item.DepartmentId</td>
+        </tr>
+    }
+
+    @*@for (int i = 0; i < Model.Rows.Count; i++)
+        {
+            <tr>
+                <td>@Model.Rows[i][0]</td>
+                <td>@Model.Rows[i][1]</td>
+                <td>@Model.Rows[i][2]</td>
+                <td>@Model.Rows[i][3]</td>
+                <td>@Model.Rows[i][4]</td>
+            </tr>
+        }*@
+
+</table>
+
+@*<select>
+        @for (int i = 0; i < Model.Rows.Count; i++)
+        {
+            <option value="@Model.Rows[i][1]">@Model.Rows[i][1]</option>
+        }
+    </select>*@
+
