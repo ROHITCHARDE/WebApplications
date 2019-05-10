@@ -13,7 +13,7 @@ namespace TestAppn.Controllers
     {
         string connectionString = @"data source=NIT-WKS-0047\SQLEXPRESS;initial catalog=TestDB;integrated security=True";
         // GET: Employee
-        public ActionResult Index()
+        public ActionResult Index(string searching)
         {
             DataTable dt = new DataTable();
             List<tblEmployee> tblEmp = new List<tblEmployee>();
@@ -50,6 +50,16 @@ namespace TestAppn.Controllers
                 lstDept.Add(dept);
             }
             ViewBag.empdata = lstDept;
+
+            if (!string.IsNullOrEmpty(searching))
+            {
+                int a = (from e in lstDept
+                         where e.Name == searching
+                         select e.Id).FirstOrDefault();
+
+
+                tblEmp = tblEmp.Where(emp => emp.DepartmentId.Equals(a)).ToList();
+            }
 
             return View(tblEmp);
         }

@@ -5,13 +5,27 @@
     ViewBag.Title = "Index";
 }
 <h2>Index</h2>
-<select>
-    @foreach (var item in ViewBag.empdata)
-    {
-        <option value="@item.Id">@item.Name</option>
-    }
+@*<select>
+        @foreach (var item in ViewBag.empdata)
+        {
+            <option value="@item.Id">@item.Name</option>
+        }
+    </select>*@
 
-</select>
+@using (Html.BeginForm("Index", "Employee", FormMethod.Get))
+{
+   @*@Html.DropDownList("EmployeeDepartment",
+                    new SelectList(Enum.GetValues(typeof(Gender))),
+                    "Select Department",
+                    new { @class = "form-control" })*@
+
+}
+
+@*@using (Html.BeginForm("Index", "Employee", FormMethod.Get))
+{
+    @Html.TextBox("searching")
+    <input type="submit" value="submit" />
+}*@
 
 <table>
     <tr>
